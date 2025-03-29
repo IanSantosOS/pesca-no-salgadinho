@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://3xyqnysih221"]
+
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_0uvhf"]
+[ext_resource type="Texture2D" uid="uid://bnfutwpembfis" path="res://assets/sprites/player.png" id="1_vhd1t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tln0"]
+atlas = ExtResource("1_vhd1t")
+region = Rect2(0, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2jl0"]
+atlas = ExtResource("1_vhd1t")
+region = Rect2(24, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_env4r"]
+atlas = ExtResource("1_vhd1t")
+region = Rect2(48, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpluk"]
+atlas = ExtResource("1_vhd1t")
+region = Rect2(72, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16mn1"]
+atlas = ExtResource("1_vhd1t")
+region = Rect2(96, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x10h8"]
+atlas = ExtResource("1_vhd1t")
+region = Rect2(120, 0, 24, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sl7j2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tln0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2jl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_env4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpluk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16mn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x10h8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tln0")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_giylq"]
+
+[node name="NPC" type="CharacterBody2D"]
+script = ExtResource("1_0uvhf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+sprite_frames = SubResource("SpriteFrames_sl7j2")
+animation = &"idle"
+
+[node name="ChatDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChatDetection"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_giylq")
+
+[connection signal="body_entered" from="ChatDetection" to="." method="_on_chat_detection_body_entered"]
+[connection signal="body_exited" from="ChatDetection" to="." method="_on_chat_detection_body_exited"]

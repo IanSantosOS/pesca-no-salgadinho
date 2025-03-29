@@ -1,0 +1,17 @@
+set {is_chatting} = true
+npc_1: Eu ouvi falar que você vende uns peixes diferenciados...
+npc_1: Também ouvi que você está devendo muito dinheiro...
+npc_1: Eu vim fazer uma proposta, papo de mudança de vida
+label proposta_npc_1
+npc_1: Você aceita ou não a minha proposta?
+- Sim
+	npc_1: Maravilha, contarei ao meu chefe e logo mais você estará dentro do esquema, não se preocupe, você está em boas mãos
+- Não
+	npc_1: ...
+	npc_1: Caso mude de ideia você sabe onde me encontrar, seria realmente uma pena perder uma peça valiosa como você.
+- Você nem me contou qual é a proposta!
+	npc_1: ...
+	npc_1: Você realmente acha que eu vou revelar algo importante para alguém que nem está no plano ainda?
+	npc_1: Você saberá do que se trata caso se junte a nós
+	jump proposta_npc_1
+set {exit} = true

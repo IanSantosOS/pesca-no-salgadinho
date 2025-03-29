@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvpmawujphnt4"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_ww4c0"]
+[ext_resource type="PackedScene" uid="uid://3re7qqgvon86" path="res://scenes/player.tscn" id="2_5qr0i"]
+[ext_resource type="PackedScene" uid="uid://3xyqnysih221" path="res://scenes/npc.tscn" id="3_wa4cs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emvxc"]
+size = Vector2(746, 64)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ww4c0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-408, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(555, 160)
+shape = SubResource("RectangleShape2D_emvxc")
+
+[node name="NPC" parent="." instance=ExtResource("3_wa4cs")]
+position = Vector2(72, 128)
+
+[node name="Player" parent="." instance=ExtResource("2_5qr0i")]
+position = Vector2(160, 128)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -30)
+process_callback = 0
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 184.0
+offset_top = 112.0
+offset_right = 580.0
+offset_bottom = 152.0
+scale = Vector2(0.222308, 0.199129)
+text = "aqui vai ter um banquinho para começar a pescar"
+autowrap_mode = 0
