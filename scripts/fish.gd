@@ -8,7 +8,6 @@ func _physics_process(delta: float) -> void:
 func pescado():
 	queue_free()
 
-func _on_body_entered(body: Node2D) -> void:
-	pass
-	#if body is Anzol:
-		#pescado()
+func _on_area_entered(area: Area2D) -> void:
+	if area is Anzol:
+		pescado()

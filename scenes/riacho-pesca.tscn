@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cweak7owb7qrj"]
+[gd_scene load_steps=4 format=3 uid="uid://cweak7owb7qrj"]
 
 [ext_resource type="PackedScene" uid="uid://k2yq1hu0xmdg" path="res://scenes/fish.tscn" id="1_63g5q"]
 [ext_resource type="Script" path="res://scripts/riacho_pesca.gd" id="1_bjgvg"]
+[ext_resource type="PackedScene" uid="uid://byd4wkhpopwge" path="res://scenes/anzol.tscn" id="3_2ul26"]
 
 [node name="RiachoPesca" type="Node2D"]
 script = ExtResource("1_bjgvg")
 fish_scenes = Array[PackedScene]([ExtResource("1_63g5q")])
+
+[node name="Anzol" parent="." instance=ExtResource("3_2ul26")]
+position = Vector2(160, 104)
 
 [node name="FishContainer" type="Node2D" parent="."]
 

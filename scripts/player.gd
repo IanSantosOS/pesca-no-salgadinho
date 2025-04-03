@@ -1,8 +1,8 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 const ACCELERATION = 1000.0
 const FRICTION = 1000.0
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = 0 #-300.0
 const SPEED_WALK = 80.0
 const SPEED_RUN = 115.0
 
@@ -11,7 +11,6 @@ var speed = SPEED_WALK
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
-	
 
 	if !Dialogic.VAR.is_chatting:
 		handle_jump()
